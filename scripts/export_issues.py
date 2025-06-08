@@ -47,29 +47,41 @@ def save_issue_as_html(issue):
         body {{ font-family: sans-serif; max-width: 800px; margin: auto; padding: 2em; }}
         h1 {{ border-bottom: 1px solid #ccc; }}
         pre, code {{ background: #f4f4f4; padding: 0.5em; border-radius: 4px; }}
+        .back-link {{ display: block; margin: 1em 0; }}
     </style>
 </head>
 <body>
+    <a href="../index.html" class="back-link">← Back to Home</a>
     <h1>{title}</h1>
     {body_html}
+    <a href="../index.html" class="back-link">← Back to Home</a>
 </body>
 </html>
 """)
     return filename, title
 
 def update_index_html(new_links):
-    """Insert links before a specific marker in index.html."""
+    """Replace links between markers in index.html."""
     if not INDEX_HTML_PATH.exists():
         raise FileNotFoundError("index.html not found at project root.")
 
     with open(INDEX_HTML_PATH, "r", encoding="utf-8") as f:
         content = f.read()
 
-    marker = "<!-- ISSUES_START -->"
-    if marker not in content:
-        raise ValueError(f"Marker '{marker}' not found in index.html. Please add it where links should go.")
+    start_marker = "<!-- ISSUES_START -->"
+    end_marker = "<!-- ISSUES_END -->"
 
-    updated_content = content.replace(marker, marker + "\n" + "\n".join(new_links))
+    if start_marker not in content or end_marker not in content:
+        raise ValueError(f"Markers '{start_marker}' and/or '{end_marker}' not found in index.html. Please add them.")
+
+    start_idx = content.index(start_marker) + len(start_marker)
+    end_idx = content.index(end_marker)
+
+    updated_content = (
+        content[:start_idx] +
+        "\n" + "\n".join(new_links) + "\n" +
+        content[end_idx:]
+    )
 
     with open(INDEX_HTML_PATH, "w", encoding="utf-8") as f:
         f.write(updated_content)
