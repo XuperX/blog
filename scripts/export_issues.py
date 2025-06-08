@@ -13,7 +13,7 @@ def markdown_to_html(md_text):
 
 def main():
     if not TOKEN:
-        raise ValueError("Missing GITHUB_TOKEN environment variable.")
+        raise ValueError("Missing GH_TOKEN environment variable.")
 
     OUTPUT_DIR.mkdir(exist_ok=True)
     headers = {"Authorization": f"token {TOKEN}"}
