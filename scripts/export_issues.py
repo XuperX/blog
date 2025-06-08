@@ -4,7 +4,7 @@ from pathlib import Path
 from html import escape
 
 REPO = "XuperX/blog"
-TOKEN = os.getenv("GITHUB_TOKEN")
+TOKEN = os.getenv("GH_TOKEN")
 OUTPUT_DIR = Path("docs")
 
 def markdown_to_html(md_text):
