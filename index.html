@@ -5,7 +5,7 @@
     <title>Xure Blog</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A collection of short and informative programming articles written in JavaScript. 100% open-source.">
+    <meta name="description" content="Random">
 
     <link rel="stylesheet" type="text/css" href="css/structure.css">
     <link rel="stylesheet" type="text/css" href="css/typography.css">
@@ -124,7 +124,7 @@
         return html`
           <div className="posts">
             ${(issues || [])
-              .filter(({ user }) => user.login === 'mateogianolio')
+              .filter(({ user }) => user.login === 'xuperx')
               .filter(({ number }) => !search || Number(search.slice(1)) === number)
               .map(({
                 number,
