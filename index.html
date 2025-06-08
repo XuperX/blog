@@ -39,8 +39,8 @@
           async function fetchIssues() {
             if (!issues) {
               const { url, ...options } = endpoint("GET /repos/:owner/:repo/issues", {
-                owner: "mateogianolio",
-                repo: "issuance",
+                owner: "xuperx",
+                repo: "blog",
                 auth: 'x'
               });
               const res = await fetch(url, options);
@@ -121,11 +121,11 @@
           <${Header} />
           <${Posts} />
         `,
-        document.querySelector('#issuance')
+        document.querySelector('#blog')
       )
     </script>
   </head>
   <body>
-    <div id="issuance" />
+    <div id="blog" />
   </body>
 </html>
