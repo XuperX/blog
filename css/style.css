@@ -1,0 +1,135 @@
+/* Overall page layout */
+body {
+  margin: 0;
+  padding: 2em;
+  font-family: 'PT Serif', serif;
+  background-color: #fdfdfd;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+}
+
+header .title a {
+  text-decoration: none;
+  font-size: 2em;
+  color: #2c3e50;
+}
+
+.description {
+  font-family: 'PT Sans', sans-serif;
+  color: #777;
+  font-size: 1.1em;
+}
+
+/* Posts container */
+.posts {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Individual post */
+.post {
+  margin-bottom: 3em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #eee;
+}
+
+/* Post title */
+.post .title {
+  margin: 0;
+  font-size: 1.5em;
+  color: #2c3e50;
+}
+
+.post .title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post .title a:hover {
+  text-decoration: underline;
+}
+
+/* Meta info */
+.meta {
+  font-size: 0.9em;
+  color: #888;
+  margin-bottom: 1em;
+}
+
+/* Labels / categories */
+.categories {
+  margin: 0.5em 0;
+  font-size: 0.9em;
+}
+
+.categories span {
+  background: #eee;
+  padding: 0.2em 0.5em;
+  margin-right: 0.3em;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Summary and full post content */
+.summary,
+.body {
+  margin-top: 1em;
+}
+
+.summary p,
+.body p {
+  margin-bottom: 1em;
+}
+
+/* Comments section */
+.comments {
+  background-color: #fafafa;
+  padding: 1em;
+  border-radius: 6px;
+  margin-top: 2em;
+}
+
+.comments h2 {
+  margin-top: 0;
+}
+
+.comment {
+  border-top: 1px solid #ddd;
+  padding-top: 1em;
+  margin-top: 1em;
+}
+
+.comment:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.comment .author {
+  font-weight: bold;
+  color: #2980b9;
+  text-decoration: none;
+}
+
+.comment .date {
+  display: block;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 0.2em;
+}
+
+/* Links */
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
