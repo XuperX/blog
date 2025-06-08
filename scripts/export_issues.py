@@ -1,5 +1,3 @@
-# scripts/export_issues.py
-
 import os
 import requests
 from pathlib import Path
@@ -10,10 +8,13 @@ TOKEN = os.getenv("GITHUB_TOKEN")
 OUTPUT_DIR = Path("docs")
 
 def markdown_to_html(md_text):
-    # Optional: You could use markdown2/markdown libs instead
+    # Optional: Use real markdown parser like markdown2
     return "<pre>" + escape(md_text) + "</pre>"
 
 def main():
+    if not TOKEN:
+        raise ValueError("Missing GITHUB_TOKEN environment variable.")
+
     OUTPUT_DIR.mkdir(exist_ok=True)
     headers = {"Authorization": f"token {TOKEN}"}
     url = f"https://api.github.com/repos/{REPO}/issues?state=open"
@@ -41,6 +42,9 @@ def main():
         f.write("<h1>Blog Posts</h1><ul>")
         f.write("".join(index_links))
         f.write("</ul></body></html>")
+
+    # Disable Jekyll
+    (OUTPUT_DIR / ".nojekyll").write_text("")
 
 if __name__ == "__main__":
     main()
