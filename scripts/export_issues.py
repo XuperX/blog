@@ -11,7 +11,7 @@ OUTPUT_DIR = PROJECT_ROOT / "docs"
 INDEX_HTML_PATH = PROJECT_ROOT / "index.html"
 
 def markdown_to_html(md_text):
-    return markdown.markdown(md_text)
+    return markdown.markdown(md_text, extensions=['fenced_code', 'codehilite'])
 
 def issue_to_markdown(issue):
     number = issue["number"]
@@ -43,12 +43,7 @@ def save_issue_as_html(issue):
         f.write(f"""<html>
 <head>
     <title>{title}</title>
-    <style>
-        body {{ font-family: sans-serif; max-width: 800px; margin: auto; padding: 2em; }}
-        h1 {{ border-bottom: 1px solid #ccc; }}
-        pre, code {{ background: #f4f4f4; padding: 0.5em; border-radius: 4px; }}
-        .back-link {{ display: block; margin: 1em 0; }}
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <a href="../index.html" class="back-link">← Back to Home</a>
